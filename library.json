@@ -11,6 +11,7 @@
         "electroniccats/CayenneLPP": "1.6.1"
     },
     "build": {
+			  "srcDir": "."
         "extraScript": "build_as_lib.py"
     }
 }
