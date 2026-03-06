@@ -13,14 +13,6 @@ src_filter = [
   '+<lib/ed25519/*.c>',
 ]
 
-menv.Append(
-    CPPPATH=[
-        join("$PROJECT_DIR", "include"),
-        join("$PROJECT_DIR", "src"),
-        join("$PROJECT_DIR", "lib", "ed25519"),
-    ]
-)
-
 # add build and include dirs according to CPPDEFINES
 for item in menv.get("CPPDEFINES", []):
  
