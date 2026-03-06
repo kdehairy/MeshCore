@@ -1,4 +1,4 @@
-from os.path import realpath
+from os.path import join
 
 Import("env") # type: ignore
 menv=env # type: ignore
@@ -10,7 +10,16 @@ src_filter = [
   '+<helpers/radiolib/*.cpp>',
   '+<helpers/ui/MomentaryButton.cpp>',
   '+<helpers/ui/buzzer.cpp>',
+  '+<../lib/ed25519/*.c>',
 ]
+
+menv.Append(
+    CPPPATH=[
+        join("$PROJECT_DIR", "include"),
+        join("$PROJECT_DIR", "src"),
+        join("$PROJECT_DIR", "..", "lib", "ed25519"),
+    ]
+)
 
 # add build and include dirs according to CPPDEFINES
 for item in menv.get("CPPDEFINES", []):
