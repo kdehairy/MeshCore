@@ -8,9 +8,29 @@
         "rweather/Crypto": "^0.4.0",
         "adafruit/RTClib": "^2.1.3",
         "melopero/Melopero RV3028": "^1.1.0",
-        "electroniccats/CayenneLPP": "1.6.1"
+        "electroniccats/CayenneLPP": "1.6.1",
+				"densaugeo/base64": "~1.4.0",
+				"adafruit/Adafruit SSD1306": "^2.5.13",
+				"adafruit/Adafruit INA3221 Library": "^1.0.1",
+				"adafruit/Adafruit INA219": "^1.2.3",
+				"robtillaart/INA226": "^0.6.4",
+				"adafruit/Adafruit INA260 Library": "^1.5.3",
+				"adafruit/Adafruit AHTX0": "^2.0.5",
+				"adafruit/Adafruit BME280 Library": "^2.3.0",
+				"adafruit/Adafruit BMP280 Library": "^2.6.8",
+				"adafruit/Adafruit SHTC3 Library": "^1.0.1",
+				"sensirion/Sensirion I2C SHT4x": "^1.1.2",
+				"arduino-libraries/Arduino_LPS22HB": "^1.0.2",
+				"adafruit/Adafruit MLX90614 Library": "^2.1.5",
+				"adafruit/Adafruit_VL53L0X": "^1.2.4",
+				"stevemarple/MicroNMEA": "^2.0.6",
+				"adafruit/Adafruit BME680 Library": "^2.0.4",
+				"adafruit/Adafruit BMP085 Library": "^1.2.4"
     },
     "build": {
+				"flags": [
+					"-I lib/ed25519"
+				],
         "extraScript": "build_as_lib.py"
     }
 }

@@ -1,4 +1,6 @@
 from os.path import realpath
+import subprocess
+import json
 
 Import("env") # type: ignore
 menv=env # type: ignore
@@ -36,6 +38,21 @@ for item in menv.get("CPPDEFINES", []):
     # VARIANTS HANDLING
     elif isinstance(item, tuple) and item[0] == "MC_VARIANT":
         variant_name = item[1]
+        command = ["pio", "project", "config", "--json-output"]
+        output = subprocess.run(command, capture_output=True, text=True, check=True)
+        project_config = json.loads(output.stdout)
+
+        variant_config_block = next((item for item in project_config if item[0] == variant_name), None)
+        if variant_config_block:
+            variant_config = dict(variant_config_block[1])
+            build_flags = variant_config.get("build_flags", [])
+            menv.Append(BUILD_FLAGS=build_flags)
+            build_src_filter = variant_config.get("build_src_filter", [])
+            src_filter.append(build_src_filter)
+            #lib_deps = variant_config.get("lib_deps", [])
+            #menv.Append(LIB_DEPS=lib_deps)
+
+
         src_filter.append(f"+<../variants/{variant_name}>")
     
     # INCLUDE EXAMPLE CODE IN BUILD (to provide your own support files without touching the tree)
